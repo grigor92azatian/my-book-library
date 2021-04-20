@@ -11,7 +11,7 @@ body{
 }
 
 .library-display{
-    width: 50%;
+    width: 1000px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;

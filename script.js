@@ -14,20 +14,33 @@ function Book(title, author, pages, read){                //Book object construc
 function addBookToLibrary(bookObj){    //function that will take the user's input and add a book to my library array
     myLibrary.push(bookObj);
 }
-
-function displayLibrary(){
+function addNewBookToLibrary(){         //get info for new book with this
+    let title = prompt("Title?");
+    let author = prompt("Author?");
+    let pages = prompt("How many pages?");
+    let read = prompt("Have you read this book?");
+    let newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    displayLibrary();
+}
+function displayLibrary(){              //use this to add initial set of books to library
     let libraryDisplay = document.querySelector(".library-display");
     myLibrary.forEach(element => {
         let book = document.createElement("li");
-        book.style.cssText = "color: blue; border: 1px solid green; list-style-type: none;"+
+        book.style.cssText = "color: black; list-style-type: none;"+
                                 "display: flex; flex-direction: column; align-items:center;"+
-                                "justify-content: space-between; width:20%; margin:10px; height: 150px;"
+                                "justify-content: space-between; width:20%; margin:10px; height: 150px;"+
+                                "background-image:url('https://cdn4.iconfinder.com/data/icons/small-n-flat/24/book-512.png');"+
+                                "background-size:200px 150px;"
         //book.innerText = element.displayString();
         book.innerHTML = element.displayString();
         libraryDisplay.appendChild(book);
     });
 }
 
+function addOneBook(){              //use this to add additional (user input) books to library
+
+}
 
 
 
@@ -39,10 +52,7 @@ let book5 = new Book("testing", "you", 35, false);
 let book6 = new Book("Still Testing", "Him", 234, true);
 let book7 = new Book("hello world", "Me", 24, true);
 let book8 = new Book("testing", "you", 35, false);
-let book9 = new Book("Still Testing", "Him", 234, true);
-let book10 = new Book("hello world", "Me", 24, true);
-let book11 = new Book("testing", "you", 35, false);
-let book12 = new Book("Still Testing", "Him", 234, true);
+
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
@@ -52,9 +62,10 @@ addBookToLibrary(book5);
 addBookToLibrary(book6);
 addBookToLibrary(book7);
 addBookToLibrary(book8);
-addBookToLibrary(book9);
-addBookToLibrary(book10);
-addBookToLibrary(book11);
-addBookToLibrary(book12);
 
-displayLibrary();
+
+
+
+let addBookButton = document.querySelector(".add-book");
+addBookButton.addEventListener("click", addNewBookToLibrary);
+
