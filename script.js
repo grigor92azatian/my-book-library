@@ -42,30 +42,43 @@ function addOneBook(){              //use this to add additional (user input) bo
 
 }
 
+function getBookInfo(){
+    let bookTitle = document.querySelector("#book-title").value;
+    let bookAuthor = document.querySelector("#book-author").value;
+    let bookPages = document.querySelector("#book-pages").value;
+    let readStatus;
+    if(document.querySelector("#true").checked==true){
+        readStatus = true;
+    }else if(document.querySelector("#false").checked==true){
+        readStatus = false;
+    }
+    console.log(readStatus);
+    let book = new Book(bookTitle,bookAuthor,bookPages,readStatus);
+    addBookToLibrary(book);
+    displayLibrary();
+}
+
+let addBookButton = document.querySelector("#add-book");
+addBookButton.addEventListener("click",getBookInfo);
 
 
-let book1 = new Book("hello world", "Me", 24, true);
-let book2 = new Book("testing", "you", 35, false);
-let book3 = new Book("Still Testing", "Him", 234, true);
-let book4 = new Book("hello world", "Me", 24, true);
-let book5 = new Book("testing", "you", 35, false);
-let book6 = new Book("Still Testing", "Him", 234, true);
-let book7 = new Book("hello world", "Me", 24, true);
-let book8 = new Book("testing", "you", 35, false);
-
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
-addBookToLibrary(book5);
-addBookToLibrary(book6);
-addBookToLibrary(book7);
-addBookToLibrary(book8);
-
+// let book1 = new Book("hello world", "Me", 24, true);
+// let book2 = new Book("testing", "you", 35, false);
+// let book3 = new Book("Still Testing", "Him", 234, true);
+// let book4 = new Book("hello world", "Me", 24, true);
+// let book5 = new Book("testing", "you", 35, false);
+// let book6 = new Book("Still Testing", "Him", 234, true);
+// let book7 = new Book("hello world", "Me", 24, true);
+// let book8 = new Book("testing", "you", 35, false);
+// addBookToLibrary(book1);
+// addBookToLibrary(book2);
+// addBookToLibrary(book3);
+// addBookToLibrary(book4);
+// addBookToLibrary(book5);
+// addBookToLibrary(book6);
+// addBookToLibrary(book7);
+// addBookToLibrary(book8);
 
 
 
-let addBookButton = document.querySelector(".add-book");
-addBookButton.addEventListener("click", addNewBookToLibrary);
 
