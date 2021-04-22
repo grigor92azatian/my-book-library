@@ -5,8 +5,24 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Grigor's Library of Books</h1>
-    <button class="add-book">Add A Book</button>
+    <h1>My Library</h1>
+    <h2>Here's my take on a virtual library that you can use to keep track of the books you've read as well as those you would like to read.</h2>
+    <form action="">
+        <label for="book-title">Title:</label>
+        <input type="text" id="book-title" name="book-title">
+
+        <label for="book-author">Author:</label>
+        <input type="text" id="book-author" name="book-author">
+        
+        <label for="book-pages">Number of Pages:</label>
+        <input type="text" id="book-pages" name="book-pages">
+
+        <input type="radio" id="true" name="read-status" value="true">
+        <label for="true">Read</label>
+        <input type="radio" id="false" name="read-status" value="false">
+        <label for="false">Not Read</label>            
+    </form>
+        <button id="add-book">Add This Book</button>
     <ul class="library-display">
 
     </ul>
