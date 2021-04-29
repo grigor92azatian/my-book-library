@@ -24,6 +24,9 @@ function getUserInput(){    //function that takes user's input and returns a new
     }else if(document.querySelector("#false").checked==true){
         readStatus = false;
     }
+    if(isNaN(bookPages)){
+        alert("Please enter a number for 'Number of Pages'");
+    }
     return new Book(bookTitle,bookAuthor,bookPages,readStatus);
 }
 
@@ -74,16 +77,6 @@ addBookButton.addEventListener("click", function(event){
     displayBookToPage(newBook);
     bookForm.reset();
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
