@@ -6,7 +6,7 @@
 }
 
 body{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -58,7 +58,4 @@ li span,button{
     justify-content: space-around;
 }
 
-#newBookForm{
-
-}
 

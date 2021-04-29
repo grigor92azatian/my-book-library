@@ -52,6 +52,10 @@ function displayBookToPage(bookObj){   //
     document.querySelector(`#delete${bookObj.title.split(' ').join('').toString()}`).addEventListener("click",function(){
         console.log("delete button works");
         document.querySelector(`#${bookObj.title.split(" ").join("").toString()}`).parentNode.removeChild(document.querySelector(`#${bookObj.title.split(" ").join("").toString()}`));
+        let removeIndex = bookObjArray.findIndex(function(book){
+            return book.title === bookObj.title;
+        });
+        removeBookFromLibrary(removeIndex);
     });
 }
 
