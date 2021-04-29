@@ -22,7 +22,7 @@ body{
     /* flex:1; */
     width: 100%;
     height: 85%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .libraryDisplay{
     width: 100%;
