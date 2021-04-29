@@ -31,19 +31,28 @@ function addBookToLibrary(bookObj){    //assigns user's input to newBook variabl
     bookObjArray.push(bookObj);
     console.log(bookObjArray);
 }
+function removeBookFromLibrary(index){
+    bookObjArray.splice(index,1);
+}
 
 function displayBookToPage(bookObj){   //
     //create new li element
     let newLi = document.createElement("li");
+    newLi.setAttribute("id",bookObj.title.split(" ").join("").toString());
     newLi.innerHTML = `
         <span>${bookObj.title}</span>
         <span>${bookObj.author}</span>
         <span>${bookObj.numPages}</span>
         <span>${bookObj.read?"Yes":"No"}</span>
-        <button>Delete</button>
+        <button id="delete${bookObj.title.split(' ').join('').toString()}">Delete</button>
         `;
     //append new li to ul on page
     libraryUl.appendChild(newLi);
+    //add event listener to delete button
+    document.querySelector(`#delete${bookObj.title.split(' ').join('').toString()}`).addEventListener("click",function(){
+        console.log("delete button works");
+        document.querySelector(`#${bookObj.title.split(" ").join("").toString()}`).parentNode.removeChild(document.querySelector(`#${bookObj.title.split(" ").join("").toString()}`));
+    });
 }
 
 let addBookButton = document.querySelector("#addBook");
