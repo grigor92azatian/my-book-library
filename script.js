@@ -40,25 +40,46 @@ function removeBookFromLibrary(index){
 
 function displayBookToPage(bookObj){   //
     //create new li element
+    let bookTitleID = bookObj.title.split("").filter(function(char){
+    if(/[a-zA-Z0-9]/.test(char)){
+        return char;
+    }
+    }).join("");
     let newLi = document.createElement("li");
-    newLi.setAttribute("id",bookObj.title.split(" ").join("").toString());
+    newLi.setAttribute("id","book"+bookTitleID);
     newLi.innerHTML = `
         <span>${bookObj.title}</span>
         <span>${bookObj.author}</span>
         <span>${bookObj.numPages}</span>
-        <span>${bookObj.read?"Yes":"No"}</span>
-        <button id="delete${bookObj.title.split(' ').join('').toString()}">Delete</button>
+        <span id="readStatus${bookTitleID}">${bookObj.read?"Yes":"No"}</span>
+        <span>
+            <button id="delete${bookTitleID}">Delete</button>
+            <button id="changeReadOf${bookTitleID}">Read Status</button>
+        </span>
         `;
     //append new li to ul on page
     libraryUl.appendChild(newLi);
     //add event listener to delete button
-    document.querySelector(`#delete${bookObj.title.split(' ').join('').toString()}`).addEventListener("click",function(){
+    document.querySelector(`#delete${bookTitleID}`).addEventListener("click",function(){
         console.log("delete button works");
-        document.querySelector(`#${bookObj.title.split(" ").join("").toString()}`).parentNode.removeChild(document.querySelector(`#${bookObj.title.split(" ").join("").toString()}`));
+        document.querySelector(`#book${bookTitleID}`).parentNode.removeChild(document.querySelector(`#book${bookTitleID}`));
         let removeIndex = bookObjArray.findIndex(function(book){
             return book.title === bookObj.title;
         });
         removeBookFromLibrary(removeIndex);
+    });
+    //add event listener to read status button
+    document.querySelector(`#changeReadOf${bookTitleID}`).addEventListener("click",function(){
+        let bookIndex = bookObjArray.findIndex(function(book){
+            return book.title === bookObj.title;
+        });
+        if(document.querySelector(`#readStatus${bookTitleID}`).textContent === "Yes"){
+            document.querySelector(`#readStatus${bookTitleID}`).textContent = "No";
+            bookObjArray[bookIndex].read = false;
+        }else{
+            document.querySelector(`#readStatus${bookTitleID}`).textContent = "Yes";
+            bookObjArray[bookIndex].read = true;
+        }
     });
 }
 
