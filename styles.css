@@ -40,14 +40,16 @@ ul li{
     display: flex;
     flex-direction: row;
 }
-li span,button{
+li span{
     width: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
-
+li button{
+    width: 50%;
+}
 #footer{
     background-color: rgb(223, 244, 250);
     width: 100%;
